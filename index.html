@@ -1,626 +1,775 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Ару — личный сайт</title>
-
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            background: #f7f5ef;
-            color: #30332e;
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-        }
-
-        /* ================= HEADER ================= */
-
-        header {
-            width: 100%;
-            padding: 24px 7%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #dedbd2;
-            background: #f7f5ef;
-        }
-
-        .logo {
-            font-family: Georgia, serif;
-            font-size: 27px;
-            font-weight: bold;
-            color: #30332e;
-        }
-
-        .logo span {
-            color: #71806A;
-        }
-
-        nav {
-            display: flex;
-            gap: 32px;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: #555850;
-            font-size: 15px;
-            transition: 0.2s;
-        }
-
-        nav a:hover {
-            color: #71806A;
-        }
-
-
-        /* ================= ABOUT ================= */
-
-        .about {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 80px 30px 70px;
-        }
-
-        .about-label {
-            font-size: 13px;
-            letter-spacing: 2px;
-            color: #8a8c84;
-            margin-bottom: 18px;
-            text-transform: uppercase;
-        }
-
-        .about h2 {
-            font-family: Georgia, serif;
-            font-size: 48px;
-            font-weight: normal;
-            margin-bottom: 20px;
-        }
-
-        .about p {
-            max-width: 700px;
-            font-size: 18px;
-            color: #65675f;
-        }
-
-
-        /* ================= NEWS ================= */
-
-        .news {
-            background: #eeeae1;
-            padding: 80px 20px 100px;
-        }
-
-        .news-inner {
-            max-width: 1150px;
-            margin: 0 auto;
-        }
-
-        .category {
-            display: inline-block;
-            padding: 8px 15px;
-            border-radius: 30px;
-            background: #dfe4d9;
-            color: #5e6958;
-            font-size: 12px;
-            letter-spacing: 1.5px;
-            margin-bottom: 22px;
-        }
-
-        .news-title {
-            max-width: 1000px;
-            font-family: Georgia, serif;
-            font-size: clamp(43px, 6vw, 70px);
-            line-height: 1.04;
-            color: #71806A;
-            margin-bottom: 20px;
-            font-weight: normal;
-        }
-
-        .date {
-            color: #85867f;
-            font-size: 14px;
-            margin-bottom: 45px;
-        }
-
-
-        /* ================= HERO ================= */
-
-        .news-hero {
-            display: grid;
-            grid-template-columns: 1fr 0.9fr;
-            gap: 35px;
-            align-items: stretch;
-            margin-bottom: 35px;
-        }
-
-        .intro {
-            background: #f8f6f0;
-            border-radius: 28px;
-            padding: 45px;
-            font-family: Georgia, serif;
-            font-size: 25px;
-            line-height: 1.45;
-            display: flex;
-            align-items: center;
-        }
-
-        .intro strong {
-            color: #71806A;
-        }
-
-
-        /* ================= BASKET ================= */
-
-        .basket-box {
-            min-height: 390px;
-            border-radius: 28px;
-            background: #d9dfd1;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: flex-end;
-        }
-
-        .basket-caption {
-            position: absolute;
-            top: 25px;
-            left: 28px;
-            font-family: Georgia, serif;
-            font-size: 21px;
-            line-height: 1.2;
-            color: #596352;
-        }
-
-        .basket {
-            position: relative;
-            width: 310px;
-            height: 280px;
-            margin-bottom: -25px;
-        }
-
-        .basket-body {
-            position: absolute;
-            left: 30px;
-            bottom: 20px;
-            width: 250px;
-            height: 145px;
-            background: #9a8064;
-            border-radius: 18px 18px 45px 45px;
-            transform: perspective(300px) rotateX(-4deg);
-            z-index: 3;
-        }
-
-        .basket-body::before {
-            content: "";
-            position: absolute;
-            inset: 18px;
-            border: 4px solid #806a52;
-            border-radius: 12px 12px 35px 35px;
-        }
-
-        .basket-body::after {
-            content: "";
-            position: absolute;
-            left: 18px;
-            right: 18px;
-            top: 42px;
-            height: 5px;
-            background: #806a52;
-            box-shadow:
-                0 30px #806a52,
-                0 60px #806a52;
-            opacity: 0.8;
-        }
-
-        .handle {
-            position: absolute;
-            left: 67px;
-            top: 45px;
-            width: 175px;
-            height: 135px;
-            border: 18px solid #806a52;
-            border-bottom: none;
-            border-radius: 100px 100px 0 0;
-            z-index: 2;
-        }
-
-
-        /* ================= PRODUCTS IN BASKET ================= */
-
-        .apple1,
-        .apple2 {
-            position: absolute;
-            width: 75px;
-            height: 75px;
-            background: #bd7560;
-            border-radius: 50%;
-            z-index: 6;
-        }
-
-        .apple1 {
-            left: 48px;
-            bottom: 125px;
-        }
-
-        .apple2 {
-            right: 52px;
-            bottom: 130px;
-            width: 68px;
-            height: 68px;
-        }
-
-        .apple1::before,
-        .apple2::before {
-            content: "";
-            position: absolute;
-            width: 9px;
-            height: 25px;
-            background: #66523f;
-            top: -15px;
-            left: 34px;
-            transform: rotate(-12deg);
-            border-radius: 5px;
-        }
-
-        .lemon {
-            position: absolute;
-            width: 75px;
-            height: 50px;
-            background: #d6b85e;
-            border-radius: 50%;
-            left: 115px;
-            bottom: 140px;
-            transform: rotate(-20deg);
-            z-index: 7;
-        }
-
-        .carrot {
-            position: absolute;
-            width: 35px;
-            height: 120px;
-            background: #cf8757;
-            border-radius: 50% 50% 60% 60%;
-            right: 65px;
-            bottom: 150px;
-            transform: rotate(25deg);
-            z-index: 7;
-        }
-
-        .leaf1,
-        .leaf2,
-        .leaf3 {
-            position: absolute;
-            width: 45px;
-            height: 20px;
-            background: #73836b;
-            border-radius: 100% 0;
-            z-index: 8;
-        }
-
-        .leaf1 {
-            right: 58px;
-            bottom: 245px;
-            transform: rotate(25deg);
-        }
-
-        .leaf2 {
-            left: 55px;
-            bottom: 235px;
-            transform: rotate(-25deg);
-        }
-
-        .leaf3 {
-            left: 105px;
-            bottom: 250px;
-            transform: rotate(15deg);
-        }
-
-
-        /* ================= STATS ================= */
-
-        .stats {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin-bottom: 50px;
-        }
-
-        .stat {
-            border-radius: 24px;
-            padding: 35px;
-        }
-
-        .stat.green {
-            background: #71806A;
-            color: white;
-        }
-
-        .stat.beige {
-            background: #f7f3e8;
-        }
-
-        .stat-number {
-            font-family: Georgia, serif;
-            font-size: 58px;
-            line-height: 1;
-            margin-bottom: 12px;
-        }
-
-        .stat-text {
-            font-size: 16px;
-            max-width: 400px;
-        }
-
-
-        /* ================= ARTICLE ================= */
-
-        .text {
-            background: #f8f6f0;
-            border-radius: 28px;
-            padding: 55px;
-            margin-bottom: 35px;
-        }
-
-        .text h2 {
-            font-family: Georgia, serif;
-            font-size: 34px;
-            font-weight: normal;
-            margin-top: 45px;
-            margin-bottom: 15px;
-            color: #71806A;
-        }
-
-        .text h2:first-child {
-            margin-top: 0;
-        }
-
-        .text p {
-            font-size: 17px;
-            color: #555850;
-            margin-bottom: 18px;
-        }
-
-
-        /* ================= PRODUCTS ================= */
-
-        .products {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 15px;
-            margin-bottom: 40px;
-        }
-
-        .product {
-            background: #f8f6f0;
-            border-radius: 22px;
-            padding: 25px 15px;
-            text-align: center;
-            min-height: 180px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .product-icon {
-            font-size: 43px;
-            margin-bottom: 10px;
-        }
-
-        .product-name {
-            font-family: Georgia, serif;
-            font-size: 19px;
-            margin-bottom: 5px;
-        }
-
-        .product-status {
-            font-size: 13px;
-            color: #71806A;
-        }
-
-
-        /* ================= THREE COLUMNS ================= */
-
-        .columns {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            margin-bottom: 35px;
-        }
-
-        .column {
-            background: #f8f6f0;
-            border-radius: 24px;
-            padding: 30px;
-        }
-
-        .column-number {
-            font-family: Georgia, serif;
-            font-size: 22px;
-            color: #71806A;
-            margin-bottom: 12px;
-        }
-
-        .column h3 {
-            font-family: Georgia, serif;
-            font-size: 25px;
-            font-weight: normal;
-            margin-bottom: 12px;
-        }
-
-        .column p {
-            color: #686a63;
-            font-size: 15px;
-        }
-
-
-        /* ================= CONCLUSION ================= */
-
-        .conclusion {
-            background: #71806A;
-            color: white;
-            padding: 45px;
-            border-radius: 28px;
-            margin-bottom: 25px;
-        }
-
-        .conclusion h2 {
-            font-family: Georgia, serif;
-            font-size: 32px;
-            font-weight: normal;
-            margin-bottom: 15px;
-        }
-
-        .conclusion p {
-            font-size: 17px;
-            max-width: 900px;
-        }
-
-        .source {
-            font-size: 13px;
-            color: #777970;
-            padding-left: 10px;
-        }
-
-
-        /* ================= CONTACTS ================= */
-
-        .contacts {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 90px 30px;
-        }
-
-        .contacts h2 {
-            font-family: Georgia, serif;
-            font-size: 46px;
-            font-weight: normal;
-            margin-bottom: 15px;
-        }
-
-        .contacts p {
-            color: #696b64;
-            font-size: 17px;
-        }
-
-
-        /* ================= FOOTER ================= */
-
-        footer {
-            border-top: 1px solid #dedbd2;
-            padding: 25px 7%;
-            text-align: center;
-            color: #888a82;
-            font-size: 13px;
-        }
-
-
-        /* ================= MOBILE ================= */
-
-        @media (max-width: 850px) {
-
-            header {
-                padding: 20px;
-            }
-
-            nav {
-                gap: 15px;
-            }
-
-            nav a {
-                font-size: 13px;
-            }
-
-            .about {
-                padding: 60px 20px;
-            }
-
-            .about h2 {
-                font-size: 38px;
-            }
-
-            .news {
-                padding: 55px 15px 70px;
-            }
-
-            .news-title {
-                font-size: 43px;
-            }
-
-            .news-hero {
-                grid-template-columns: 1fr;
-            }
-
-            .intro {
-                padding: 30px;
-                font-size: 21px;
-            }
-
-            .basket-box {
-                min-height: 340px;
-            }
-
-            .stats {
-                grid-template-columns: 1fr;
-            }
-
-            .text {
-                padding: 30px;
-            }
-
-            .products {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .columns {
-                grid-template-columns: 1fr;
-            }
-
-            .contacts {
-                padding: 65px 20px;
-            }
-        }
-
-
-        @media (max-width: 500px) {
-
-            header {
-                flex-direction: column;
-                gap: 15px;
-            }
-
-            nav {
-                gap: 18px;
-            }
-
-            .news-title {
-                font-size: 38px;
-            }
-
-            .basket {
-                transform: scale(0.85);
-            }
-
-            .products {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Ару — Новости</title>
+
+<style>
+
+/* =====================================================
+   ОСНОВА
+===================================================== */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #ffffff;
+    color: #1d2d37;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+/* =====================================================
+   ШАПКА
+===================================================== */
+
+header {
+    height: 68px;
+    padding: 0 6.5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #ffffff;
+    border-bottom: 1px solid #eeeeeb;
+}
+
+.logo {
+    font-family: "Brush Script MT", "Segoe Script", cursive;
+    font-size: 39px;
+    font-style: italic;
+    color: #11191d;
+}
+
+.logo span {
+    font-family: Georgia, serif;
+    font-size: 24px;
+    color: #7a665b;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 37px;
+    height: 100%;
+}
+
+nav a {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+    color: #263038;
+}
+
+nav a.active::after {
+    content: "";
+    position: absolute;
+    height: 2px;
+    background: #ddc995;
+    left: 0;
+    right: 0;
+    bottom: 20px;
+    border-radius: 5px;
+}
+
+
+/* =====================================================
+   ГЛАВНЫЙ ЭКРАН
+===================================================== */
+
+.hero {
+    min-height: 330px;
+    display: grid;
+    grid-template-columns: 54% 46%;
+    background: #faf9f7;
+}
+
+.hero-left {
+    padding: 36px 30px 36px 6.5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.category {
+    display: inline-block;
+    width: fit-content;
+    padding: 6px 15px;
+    border-radius: 30px;
+    background: #eee7e1;
+    color: #27333a;
+    font-size: 11px;
+    letter-spacing: 2px;
+    margin-bottom: 13px;
+}
+
+.hero-title {
+    max-width: 590px;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(39px, 4.15vw, 58px);
+    line-height: 1.02;
+    font-weight: 600;
+    letter-spacing: -1.7px;
+    color: #142b38;
+}
+
+.date {
+    margin-top: 18px;
+    font-size: 13px;
+    color: #47535a;
+}
+
+.date::before {
+    content: "⌖";
+    font-size: 19px;
+    margin-right: 8px;
+    color: #725d51;
+}
+
+
+/* =====================================================
+   ФОТО СПРАВА
+===================================================== */
+
+.hero-right {
+    position: relative;
+    overflow: hidden;
+
+    background-image:
+        url("https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1300&q=90");
+
+    background-size: cover;
+    background-position: center;
+}
+
+
+/* закруглённый переход слева */
+
+.hero-right::before {
+    content: "";
+    position: absolute;
+    left: -95px;
+    top: -25px;
+    width: 170px;
+    height: 390px;
+    background: #faf9f7;
+    border-radius: 50%;
+    transform: rotate(9deg);
+}
+
+
+/* декоративная линия */
+
+.hero-right::after {
+    content: "";
+    position: absolute;
+    left: -50px;
+    top: 130px;
+    width: 120px;
+    height: 150px;
+    border: 2px solid rgba(213,198,181,.8);
+    border-radius: 50%;
+    transform: rotate(-15deg);
+}
+
+
+/* =====================================================
+   НАДПИСЬ НА ФОТОГРАФИИ
+===================================================== */
+
+.photo-note {
+    position: absolute;
+    top: 55px;
+    right: 7%;
+    z-index: 10;
+
+    padding: 10px 14px;
+
+    font-family: "Comic Sans MS", cursive;
+    font-size: 18px;
+    line-height: 1.15;
+    font-weight: bold;
+
+    color: #27312d;
+
+    background: rgba(255, 252, 245, 0.88);
+    border-radius: 8px;
+
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.12);
+
+    transform: rotate(-5deg);
+    text-align: center;
+}
+
+.photo-note::after {
+    content: "↙";
+    display: block;
+
+    font-family: Arial, sans-serif;
+    font-size: 42px;
+    line-height: 25px;
+
+    margin-top: 5px;
+
+    transform: rotate(10deg);
+}
+
+
+/* =====================================================
+   ОСНОВНОЙ КОНТЕНТ
+===================================================== */
+
+main {
+    max-width: 1035px;
+    margin: 0 auto;
+    padding: 35px 20px 45px;
+}
+
+
+/* =====================================================
+   ВВОДНЫЙ ТЕКСТ + ПРОЦЕНТЫ
+===================================================== */
+
+.intro-row {
+    display: grid;
+    grid-template-columns: 1.55fr 1fr;
+    gap: 44px;
+    align-items: center;
+    margin-bottom: 34px;
+}
+
+.intro-text {
+    font-size: 15.5px;
+    line-height: 1.55;
+    color: #273a43;
+}
+
+.highlight-green {
+    background: #dfe9d7;
+    border-radius: 4px;
+    padding: 0 4px;
+    font-weight: bold;
+}
+
+.highlight-yellow {
+    background: #f0dfb6;
+    border-radius: 4px;
+    padding: 0 4px;
+    font-weight: bold;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 17px;
+}
+
+.stat {
+    height: 136px;
+    border-radius: 16px;
+    padding: 20px 18px;
+}
+
+.stat.green {
+    background: #eef1e8;
+}
+
+.stat.orange {
+    background: #faeee8;
+}
+
+.stat-number {
+    font-family: Georgia, serif;
+    font-size: 49px;
+    line-height: 1;
+    margin-bottom: 13px;
+}
+
+.stat.green .stat-number {
+    color: #41552f;
+}
+
+.stat.orange .stat-number {
+    color: #713e27;
+}
+
+.stat p {
+    font-size: 13px;
+    line-height: 1.28;
+    color: #37433d;
+}
+
+
+/* =====================================================
+   СТАТЬЯ + ФОТО КОРЗИНЫ
+===================================================== */
+
+.feature {
+    display: grid;
+    grid-template-columns: 34% 1fr;
+    gap: 30px;
+    margin-bottom: 43px;
+}
+
+.shopping-image {
+    min-height: 300px;
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+
+    background-image:
+        linear-gradient(
+            0deg,
+            rgba(20,20,15,.22),
+            rgba(255,255,255,0)
+        ),
+        url("https://images.unsplash.com/photo-1579113800032-c38bd7635818?auto=format&fit=crop&w=800&q=90");
+
+    background-size: cover;
+    background-position: center;
+}
+
+.shopping-image::after {
+    content: "Цены\A меняются... ♡";
+    white-space: pre;
+    position: absolute;
+    top: 30px;
+    left: 38px;
+    color: #ffffff;
+    font-family: "Comic Sans MS", cursive;
+    font-size: 18px;
+    line-height: 1.35;
+    transform: rotate(-5deg);
+    text-shadow: 0 2px 7px rgba(0,0,0,.4);
+}
+
+.feature-text h2 {
+    font-family: Georgia, serif;
+    font-size: 28px;
+    line-height: 1.1;
+    font-weight: normal;
+    color: #172d39;
+    margin-bottom: 16px;
+}
+
+.feature-text h2::after {
+    content: " ↗";
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    color: #697466;
+}
+
+.feature-text p {
+    font-size: 14px;
+    line-height: 1.48;
+    color: #35454d;
+    margin-bottom: 12px;
+}
+
+
+/* =====================================================
+   КАРТОЧКИ ПРОДУКТОВ
+===================================================== */
+
+.products {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+    margin-top: 18px;
+}
+
+.product {
+    height: 101px;
+    border-radius: 15px;
+    background: #f5f4f1;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.product-icon {
+    font-size: 42px;
+    line-height: 1;
+    margin-bottom: 8px;
+}
+
+.product-name {
+    font-size: 11px;
+    color: #25343b;
+}
+
+
+/* =====================================================
+   ТРИ КОЛОНКИ
+===================================================== */
+
+.columns {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-bottom: 34px;
+}
+
+.column {
+    padding: 0 25px;
+    border-right: 1px solid #ddddda;
+}
+
+.column:first-child {
+    padding-left: 0;
+}
+
+.column:last-child {
+    border-right: none;
+}
+
+.column h3 {
+    font-family: Georgia, serif;
+    font-size: 25px;
+    line-height: 1.08;
+    font-weight: normal;
+    color: #172d39;
+    margin-bottom: 18px;
+}
+
+.column h3::after {
+    content: " ↗";
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    color: #70786c;
+}
+
+.column p {
+    font-size: 13.5px;
+    line-height: 1.48;
+    color: #35444b;
+    margin-bottom: 15px;
+}
+
+.column strong {
+    color: #172d39;
+}
+
+
+/* =====================================================
+   РУКОПИСНАЯ ЗАМЕТКА
+===================================================== */
+
+.hand-note {
+    margin-top: 27px;
+    text-align: center;
+    font-family: "Comic Sans MS", cursive;
+    font-size: 14px;
+    color: #343b39;
+    transform: rotate(-5deg);
+}
+
+.hand-note::after {
+    content: "⌁";
+    display: block;
+    font-size: 34px;
+}
+
+
+/* =====================================================
+   ГЛАВНЫЙ ВЫВОД
+===================================================== */
+
+.conclusion {
+    min-height: 128px;
+    border-radius: 16px;
+    background: #eef1e8;
+
+    display: grid;
+    grid-template-columns: 100px 1fr 150px;
+
+    align-items: center;
+    gap: 20px;
+
+    padding: 20px 35px;
+}
+
+.lightbulb {
+    width: 65px;
+    height: 65px;
+
+    border-radius: 50%;
+    background: #e1e7d2;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 29px;
+}
+
+.conclusion h2 {
+    font-family: Georgia, serif;
+    font-size: 24px;
+    font-weight: normal;
+    margin-bottom: 8px;
+    color: #172d39;
+}
+
+.conclusion p {
+    max-width: 610px;
+    font-size: 13px;
+    line-height: 1.45;
+    color: #35443e;
+}
+
+.conclusion-note {
+    font-family: "Comic Sans MS", cursive;
+    font-size: 14px;
+    text-align: center;
+    transform: rotate(-6deg);
+}
+
+.conclusion-note::after {
+    content: "♡";
+    display: block;
+    font-size: 24px;
+}
+
+
+/* =====================================================
+   ИСТОЧНИК
+===================================================== */
+
+.source {
+    margin-top: 13px;
+    font-size: 10px;
+    color: #949b98;
+}
+
+.source::before {
+    content: "▣";
+    margin-right: 7px;
+}
+
+
+/* =====================================================
+   ОБО МНЕ
+===================================================== */
+
+.about {
+    padding: 65px 20px;
+    max-width: 1035px;
+    margin: 0 auto;
+}
+
+.about h2 {
+    font-family: Georgia, serif;
+    font-size: 35px;
+    font-weight: normal;
+    margin-bottom: 12px;
+}
+
+.about p {
+    font-size: 14px;
+    color: #647076;
+}
+
+
+/* =====================================================
+   КОНТАКТЫ
+===================================================== */
+
+.contacts {
+    border-top: 1px solid #eeeeeb;
+    padding: 55px 20px;
+    text-align: center;
+}
+
+.contacts h2 {
+    font-family: Georgia, serif;
+    font-size: 34px;
+    font-weight: normal;
+    margin-bottom: 10px;
+}
+
+.contacts p {
+    font-size: 14px;
+    color: #6d777b;
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer {
+    height: 70px;
+    border-top: 1px solid #eeeeeb;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 11px;
+    color: #7c8587;
+}
+
+
+/* =====================================================
+   АДАПТИВ ДЛЯ ПЛАНШЕТА
+===================================================== */
+
+@media (max-width: 850px) {
+
+    header {
+        padding: 0 25px;
+    }
+
+    nav {
+        gap: 20px;
+    }
+
+    .hero {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-left {
+        padding: 45px 25px;
+    }
+
+    .hero-right {
+        min-height: 300px;
+    }
+
+    .intro-row {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .feature {
+        grid-template-columns: 1fr;
+    }
+
+    .shopping-image {
+        min-height: 350px;
+    }
+
+    .columns {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .column {
+        border-right: none;
+        border-bottom: 1px solid #ddddda;
+        padding: 0 0 28px;
+    }
+
+    .column:last-child {
+        border-bottom: none;
+    }
+
+    .conclusion {
+        grid-template-columns: 75px 1fr;
+    }
+
+    .conclusion-note {
+        display: none;
+    }
+}
+
+
+/* =====================================================
+   АДАПТИВ ДЛЯ ТЕЛЕФОНА
+===================================================== */
+
+@media (max-width: 550px) {
+
+    header {
+        height: 65px;
+    }
+
+    .logo {
+        font-size: 30px;
+    }
+
+    nav {
+        gap: 13px;
+    }
+
+    nav a {
+        font-size: 11px;
+    }
+
+    .hero-title {
+        font-size: 38px;
+    }
+
+    main {
+        padding: 25px 16px 40px;
+    }
+
+    .stats {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .stat {
+        height: 130px;
+    }
+
+    .stat-number {
+        font-size: 38px;
+    }
+
+    .products {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .conclusion {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding: 25px;
+    }
+
+    .lightbulb {
+        margin: auto;
+    }
+
+    .photo-note {
+        right: 5%;
+        top: 45px;
+        font-size: 16px;
+    }
+}
+
+</style>
 </head>
 
 
 <body>
 
 
-<!-- ================= HEADER ================= -->
+<!-- =====================================================
+     ШАПКА
+===================================================== -->
 
 <header>
 
@@ -629,50 +778,48 @@
     </div>
 
     <nav>
-        <a href="#about">Обо мне</a>
-        <a href="#news">Новости</a>
-        <a href="#contacts">Контакты</a>
+
+        <a href="#about">
+            Обо мне
+        </a>
+
+        <a href="#news" class="active">
+            Новости
+        </a>
+
+        <a href="#contacts">
+            Контакты
+        </a>
+
     </nav>
 
 </header>
 
 
 
-<!-- ================= ABOUT ================= -->
+<!-- =====================================================
+     ГЛАВНЫЙ БЛОК
+===================================================== -->
 
-<section class="about" id="about">
-
-    <div class="about-label">
-        Личный сайт
-    </div>
-
-    <h2>
-        Привет, я Ару.
-    </h2>
-
-    <p>
-        Это мой личный сайт, где я собираю интересные материалы,
-        новости и то, чем хочу поделиться.
-    </p>
-
-</section>
+<section class="hero" id="news">
 
 
-
-<!-- ================= NEWS ================= -->
-
-<section class="news" id="news">
-
-    <div class="news-inner">
+    <div class="hero-left">
 
         <div class="category">
             НОВОСТИ · ЭКОНОМИКА
         </div>
 
 
-        <h1 class="news-title">
-            Цены на продукты в Казахстане выросли на 8,5% за год:
-            какие товары подорожали, а какие стали дешевле
+        <h1 class="hero-title">
+
+            Цены на продукты
+            в Казахстане выросли
+            на 8,5% за год:
+            какие товары
+            подорожали, а какие
+            стали дешевле
+
         </h1>
 
 
@@ -680,380 +827,17 @@
             Алматы · 3 октября 2026 года
         </div>
 
+    </div>
 
 
-        <!-- HERO -->
 
-        <div class="news-hero">
+    <div class="hero-right">
 
-            <div class="intro">
+        <div class="photo-note">
 
-                В Казахстане продолжается изменение цен
-                на продукты питания. За год продовольственные
-                товары в среднем стали дороже на
-                <strong>&nbsp;8,5%</strong>.
+            Продукты<br>
+            и цены ♡
 
-            </div>
-
-
-            <div class="basket-box">
-
-                <div class="basket-caption">
-                    Продукты<br>
-                    и цены
-                </div>
-
-
-                <div class="basket">
-
-                    <div class="handle"></div>
-
-                    <div class="apple1"></div>
-                    <div class="apple2"></div>
-
-                    <div class="lemon"></div>
-
-                    <div class="carrot"></div>
-
-                    <div class="leaf1"></div>
-                    <div class="leaf2"></div>
-                    <div class="leaf3"></div>
-
-                    <div class="basket-body"></div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-
-        <!-- STATS -->
-
-        <div class="stats">
-
-            <div class="stat green">
-
-                <div class="stat-number">
-                    8,5%
-                </div>
-
-                <div class="stat-text">
-                    Рост цен на продовольственные товары
-                    за год в Казахстане.
-                </div>
-
-            </div>
-
-
-            <div class="stat beige">
-
-                <div class="stat-number">
-                    9,3%
-                </div>
-
-                <div class="stat-text">
-                    Общий уровень годовой инфляции
-                    в стране.
-                </div>
-
-            </div>
-
-        </div>
-
-
-
-        <!-- ARTICLE -->
-
-        <div class="text">
-
-            <h2>
-                Цены меняются по-разному
-            </h2>
-
-            <p>
-                Несмотря на общий рост стоимости продуктов,
-                ситуация не является одинаковой для всех товаров.
-                Одни продукты за год подорожали, другие,
-                наоборот, показали снижение цены.
-            </p>
-
-            <p>
-                В сентябре среди товаров, стоимость которых
-                снизилась, были лук, морковь, яблоки, огурцы
-                и картофель. В первую очередь это овощи и фрукты,
-                цены на которые могут зависеть от сезона,
-                объёмов урожая и количества продукции на рынке.
-            </p>
-
-            <p>
-                Таким образом, рост цен на продукты не означает,
-                что абсолютно каждый товар становится дороже.
-                Стоимость отдельных продуктов может меняться
-                в разных направлениях одновременно.
-            </p>
-
-
-            <h2>
-                Почему это важно для покупателей
-            </h2>
-
-            <p>
-                Изменение цен влияет не только на отдельные
-                покупки, но и на семейный бюджет в целом.
-                Если продукты постепенно дорожают, покупателям
-                приходится внимательнее планировать расходы,
-                сравнивать цены в разных магазинах и выбирать
-                более доступные товары.
-            </p>
-
-            <p>
-                Особенно заметно это становится при регулярных
-                покупках. Даже небольшое изменение стоимости
-                одного продукта может казаться незначительным,
-                но при большом количестве покупок общая сумма
-                расходов может существенно отличаться
-                от прошлогодней.
-            </p>
-
-            <p>
-                При этом снижение цен на некоторые овощи и фрукты
-                показывает, что покупатели могут сталкиваться
-                с разной динамикой в зависимости от конкретного
-                продукта.
-            </p>
-
-
-            <h2>
-                Что показывают цифры
-            </h2>
-
-            <p>
-                Главный показатель сентября — рост цен
-                на продовольственные товары на 8,5% за год.
-                Для сравнения, общая годовая инфляция составила 9,3%.
-            </p>
-
-            <p>
-                Это означает, что продовольственные товары
-                остаются одной из важных частей общей картины
-                изменения цен в стране. При этом внутри самой
-                категории продуктов ситуация неоднородна:
-                пока одни товары дорожают, другие могут становиться
-                доступнее.
-            </p>
-
-
-            <h2>
-                Что будет дальше?
-            </h2>
-
-            <p>
-                Динамика цен на продукты может продолжить меняться.
-                На неё влияют сезонность, объём предложения,
-                урожай, затраты производителей и другие
-                экономические факторы.
-            </p>
-
-            <p>
-                Поэтому стоимость конкретных товаров в магазинах
-                и на рынках может заметно отличаться и меняться
-                со временем.
-            </p>
-
-            <p>
-                Для покупателей это означает, что одна цифра
-                не описывает ситуацию полностью. Чтобы понять
-                реальные изменения, важно смотреть не только
-                на общий показатель инфляции, но и на стоимость
-                конкретных продуктов.
-            </p>
-
-        </div>
-
-
-
-        <!-- PRODUCTS -->
-
-        <div class="products">
-
-            <div class="product">
-
-                <div class="product-icon">
-                    🧅
-                </div>
-
-                <div class="product-name">
-                    Лук
-                </div>
-
-                <div class="product-status">
-                    цена снизилась
-                </div>
-
-            </div>
-
-
-            <div class="product">
-
-                <div class="product-icon">
-                    🥕
-                </div>
-
-                <div class="product-name">
-                    Морковь
-                </div>
-
-                <div class="product-status">
-                    цена снизилась
-                </div>
-
-            </div>
-
-
-            <div class="product">
-
-                <div class="product-icon">
-                    🍎
-                </div>
-
-                <div class="product-name">
-                    Яблоки
-                </div>
-
-                <div class="product-status">
-                    цена снизилась
-                </div>
-
-            </div>
-
-
-            <div class="product">
-
-                <div class="product-icon">
-                    🥒
-                </div>
-
-                <div class="product-name">
-                    Огурцы
-                </div>
-
-                <div class="product-status">
-                    цена снизилась
-                </div>
-
-            </div>
-
-
-            <div class="product">
-
-                <div class="product-icon">
-                    🥔
-                </div>
-
-                <div class="product-name">
-                    Картофель
-                </div>
-
-                <div class="product-status">
-                    цена снизилась
-                </div>
-
-            </div>
-
-        </div>
-
-
-
-        <!-- THREE COLUMNS -->
-
-        <div class="columns">
-
-            <div class="column">
-
-                <div class="column-number">
-                    01
-                </div>
-
-                <h3>
-                    Почему это важно
-                </h3>
-
-                <p>
-                    Рост цен постепенно отражается
-                    на повседневных расходах семей
-                    и заставляет покупателей
-                    внимательнее планировать бюджет.
-                </p>
-
-            </div>
-
-
-            <div class="column">
-
-                <div class="column-number">
-                    02
-                </div>
-
-                <h3>
-                    Что показывают цифры
-                </h3>
-
-                <p>
-                    Продовольственные товары выросли
-                    в цене в среднем на 8,5%,
-                    а общая годовая инфляция
-                    достигла 9,3%.
-                </p>
-
-            </div>
-
-
-            <div class="column">
-
-                <div class="column-number">
-                    03
-                </div>
-
-                <h3>
-                    Что будет дальше
-                </h3>
-
-                <p>
-                    На стоимость продуктов продолжают
-                    влиять сезонность, урожай,
-                    предложение и расходы производителей.
-                </p>
-
-            </div>
-
-        </div>
-
-
-
-        <!-- CONCLUSION -->
-
-        <div class="conclusion">
-
-            <h2>
-                Главное
-            </h2>
-
-            <p>
-                За год продовольственные товары в Казахстане
-                подорожали в среднем на 8,5%, однако в сентябре
-                цены на некоторые продукты — в том числе лук,
-                морковь, яблоки, огурцы и картофель — снизились.
-                Поэтому ситуация с ценами остаётся неоднозначной:
-                стоимость разных товаров меняется по-разному.
-            </p>
-
-        </div>
-
-
-        <div class="source">
-            Источник: Бюро национальной статистики Республики Казахстан.
         </div>
 
     </div>
@@ -1062,7 +846,415 @@
 
 
 
-<!-- ================= CONTACTS ================= -->
+<!-- =====================================================
+     ОСНОВНОЙ КОНТЕНТ
+===================================================== -->
+
+<main>
+
+
+    <!-- ВВОДНЫЙ ТЕКСТ -->
+
+    <section class="intro-row">
+
+
+        <div class="intro-text">
+
+            В Казахстане продолжается изменение цен
+            на продукты питания. Согласно данным Бюро
+            национальной статистики, в сентябре 2026 года
+            продовольственные товары в среднем стали дороже
+            на <span class="highlight-green">8,5%</span>
+            по сравнению с сентябрём прошлого года.
+            При этом общий уровень годовой инфляции в стране
+            составил <span class="highlight-yellow">9,3%</span>.
+
+        </div>
+
+
+
+        <!-- ПРОЦЕНТЫ -->
+
+        <div class="stats">
+
+
+            <div class="stat green">
+
+                <div class="stat-number">
+                    8,5%
+                </div>
+
+                <p>
+                    рост цен на<br>
+                    продовольственные<br>
+                    товары за год
+                </p>
+
+            </div>
+
+
+
+            <div class="stat orange">
+
+                <div class="stat-number">
+                    9,3%
+                </div>
+
+                <p>
+                    общий уровень<br>
+                    годовой инфляции
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         ФОТО + ТЕКСТ
+    ================================================= -->
+
+    <section class="feature">
+
+
+        <div class="shopping-image"></div>
+
+
+
+        <div class="feature-text">
+
+
+            <h2>
+                Цены меняются по-разному
+            </h2>
+
+
+            <p>
+
+                Несмотря на общий рост стоимости продуктов,
+                ситуация не является одинаковой для всех товаров.
+                Одни продукты за год подорожали, другие,
+                наоборот, показали снижение цены.
+
+            </p>
+
+
+            <p>
+
+                В сентябре среди товаров, стоимость которых
+                снизилась, были лук, морковь, яблоки, огурцы
+                и картофель. В первую очередь это овощи и фрукты,
+                цены на которые могут зависеть от сезона,
+                объёмов урожая и количества продукции на рынке.
+
+            </p>
+
+
+
+            <!-- ПРОДУКТЫ -->
+
+            <div class="products">
+
+
+                <div class="product">
+
+                    <div class="product-icon">
+                        🧅
+                    </div>
+
+                    <div class="product-name">
+                        Лук
+                    </div>
+
+                </div>
+
+
+
+                <div class="product">
+
+                    <div class="product-icon">
+                        🥕
+                    </div>
+
+                    <div class="product-name">
+                        Морковь
+                    </div>
+
+                </div>
+
+
+
+                <div class="product">
+
+                    <div class="product-icon">
+                        🍎
+                    </div>
+
+                    <div class="product-name">
+                        Яблоки
+                    </div>
+
+                </div>
+
+
+
+                <div class="product">
+
+                    <div class="product-icon">
+                        🥒
+                    </div>
+
+                    <div class="product-name">
+                        Огурцы
+                    </div>
+
+                </div>
+
+
+
+                <div class="product">
+
+                    <div class="product-icon">
+                        🥔
+                    </div>
+
+                    <div class="product-name">
+                        Картофель
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         ТРИ КОЛОНКИ
+    ================================================= -->
+
+    <section class="columns">
+
+
+        <!-- 1 -->
+
+        <div class="column">
+
+
+            <h3>
+
+                Почему это важно
+                для покупателей
+
+            </h3>
+
+
+            <p>
+
+                Изменение цен влияет не только
+                на отдельные покупки, но и на семейный
+                бюджет в целом. Если продукты постепенно
+                дорожают, покупателям приходится
+                внимательнее планировать расходы,
+                сравнивать цены в разных магазинах
+                и выбирать более доступные товары.
+
+            </p>
+
+
+            <p>
+
+                Особенно заметно это становится
+                при регулярных покупках. Даже небольшое
+                изменение стоимости одного продукта
+                может казаться незначительным, но
+                при большом количестве покупок общая
+                сумма расходов может отличаться
+                от прошлогодней.
+
+            </p>
+
+
+        </div>
+
+
+
+        <!-- 2 -->
+
+        <div class="column">
+
+
+            <h3>
+
+                Что показывают
+                цифры?
+
+            </h3>
+
+
+            <p>
+
+                Главный показатель сентября —
+                рост цен на продовольственные товары
+                на <strong>8,5%</strong> за год.
+                Для сравнения, общая годовая инфляция
+                составила <strong>9,3%</strong>.
+
+            </p>
+
+
+            <p>
+
+                Это означает, что продовольственные
+                товары остаются важной частью общей
+                картины изменения цен в стране.
+                При этом внутри самой категории
+                продуктов ситуация неоднородна:
+                пока одни товары дорожают,
+                другие могут становиться доступнее.
+
+            </p>
+
+
+        </div>
+
+
+
+        <!-- 3 -->
+
+        <div class="column">
+
+
+            <h3>
+
+                Что будет дальше?
+
+            </h3>
+
+
+            <p>
+
+                Динамика цен на продукты может
+                продолжить меняться. На неё влияют
+                сезонность, объём предложения, урожай,
+                затраты производителей и другие
+                экономические факторы.
+
+            </p>
+
+
+            <p>
+
+                Поэтому стоимость конкретных товаров
+                в магазинах и на рынках может заметно
+                отличаться и меняться со временем.
+
+            </p>
+
+
+            <div class="hand-note">
+
+                Важно следить<br>
+                за новостями ♡
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =================================================
+         ГЛАВНЫЙ ВЫВОД
+    ================================================= -->
+
+    <section class="conclusion">
+
+
+        <div class="lightbulb">
+            💡
+        </div>
+
+
+
+        <div>
+
+            <h2>
+                Главный вывод
+            </h2>
+
+
+            <p>
+
+                За год продовольственные товары в Казахстане
+                подорожали в среднем на 8,5%, однако в сентябре
+                цены на некоторые продукты — в том числе лук,
+                морковь, яблоки, огурцы и картофель — снизились.
+
+            </p>
+
+        </div>
+
+
+
+        <div class="conclusion-note">
+
+            Главное<br>
+            быть в курсе
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- ИСТОЧНИК -->
+
+    <div class="source">
+
+        Источник: Бюро национальной статистики
+        Республики Казахстан.
+
+    </div>
+
+
+</main>
+
+
+
+<!-- =====================================================
+     ОБО МНЕ
+===================================================== -->
+
+<section class="about" id="about">
+
+    <h2>
+        Обо мне
+    </h2>
+
+    <p>
+        Это мой личный сайт, где я собираю интересные
+        материалы, новости и информацию, которой хочу поделиться.
+    </p>
+
+</section>
+
+
+
+<!-- =====================================================
+     КОНТАКТЫ
+===================================================== -->
 
 <section class="contacts" id="contacts">
 
@@ -1071,14 +1263,16 @@
     </h2>
 
     <p>
-        Здесь позже можно добавить удобный способ связаться со мной.
+        Здесь позже можно добавить информацию для связи.
     </p>
 
 </section>
 
 
 
-<!-- ================= FOOTER ================= -->
+<!-- =====================================================
+     FOOTER
+===================================================== -->
 
 <footer>
 
