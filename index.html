@@ -1,92 +1,372 @@
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ару — Новости</title>
+<title>Статьи и материалы</title>
+
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:Arial,Helvetica,sans-serif;color:#24333b;background:#fff}
-a{color:inherit;text-decoration:none}
-header{height:72px;padding:0 7%;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #eeeae5}
-.logo{font-family:"Brush Script MT","Segoe Script",cursive;font-size:37px;font-style:italic;color:#17252b}
-.logo span{font-family:Georgia,serif;color:#8b7766;font-size:23px}
-nav{display:flex;gap:30px;font-size:13px}
-nav a{padding:26px 0}
-nav a.active{border-bottom:2px solid #d8c69c}
-.hero{padding:66px 7% 60px;background:#f8f7f3}
-.kicker{font-size:11px;letter-spacing:2px;color:#777d70;margin-bottom:18px}
-h1,h2,h3{font-family:Georgia,"Times New Roman",serif;font-weight:normal;color:#18313c}
-.hero h1{font-size:clamp(38px,6vw,65px);line-height:1.05;max-width:760px;margin-bottom:18px}
-.hero p{max-width:630px;color:#566168;font-size:16px;line-height:1.65}
-.content{max-width:1100px;margin:0 auto;padding:48px 22px 65px}
-.section-heading{font-size:35px;margin-bottom:10px}
-.section-intro{color:#6e7778;line-height:1.6;margin-bottom:28px}
-.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
-.news-card{border:1px solid #e9e6df;border-radius:17px;overflow:hidden;background:#fff;transition:transform .2s,box-shadow .2s}
-.news-card:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(30,40,35,.08)}
-.card-image{height:245px;background-size:cover;background-position:center}
-.products-image{background-image:url("https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1200&q=85")}
-.chicken-image{background-image:url("https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?auto=format&fit=crop&w=1200&q=85")}
-.card-body{padding:25px}
-.card-tag{font-size:10px;letter-spacing:1.6px;color:#7b826f;margin-bottom:12px}
-.card-body h3{font-size:29px;line-height:1.15;margin-bottom:14px}
-.card-body p{font-size:14px;line-height:1.65;color:#58646a;margin-bottom:20px}
-.read-more{display:inline-block;padding:11px 16px;border-radius:7px;background:#e9ede3;color:#304632;font-size:13px}
-footer{padding:24px;text-align:center;border-top:1px solid #eeeae5;color:#7e8788;font-size:12px}
-@media(max-width:700px){header{padding:0 18px}.logo{font-size:30px}nav{gap:14px;font-size:11px}.cards{grid-template-columns:1fr}.card-image{height:220px}.hero{padding:45px 22px}.content{padding:35px 16px 45px}.card-body h3{font-size:25px}}
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #293a40;
+    background: #fff;
+    line-height: 1.7;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+header {
+    min-height: 75px;
+    padding: 15px 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    border-bottom: 1px solid #eeeae5;
+}
+
+.logo {
+    font-family: Georgia, serif;
+    font-size: 27px;
+    color: #80664e;
+}
+
+nav {
+    display: flex;
+    gap: 25px;
+    font-size: 13px;
+}
+
+nav a:hover {
+    color: #b0805a;
+}
+
+.hero {
+    max-width: 1100px;
+    margin: auto;
+    padding: 65px 25px 38px;
+}
+
+.eyebrow {
+    color: #a17c5b;
+    font-size: 11px;
+    letter-spacing: 3px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.hero h1 {
+    max-width: 750px;
+    margin: 15px 0;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(37px, 5vw, 58px);
+    line-height: 1.2;
+    font-weight: normal;
+    color: #735b46;
+}
+
+.hero p {
+    max-width: 680px;
+    color: #687176;
+    font-size: 16px;
+}
+
+.decoration {
+    display: flex;
+    gap: 8px;
+    margin-top: 25px;
+}
+
+.decoration span {
+    height: 5px;
+    border-radius: 10px;
+}
+
+.decoration span:nth-child(1) {
+    width: 70px;
+    background: #a9b8a0;
+}
+
+.decoration span:nth-child(2) {
+    width: 43px;
+    background: #d7ad8b;
+}
+
+.decoration span:nth-child(3) {
+    width: 25px;
+    background: #b7a9cf;
+}
+
+.articles {
+    max-width: 1100px;
+    margin: auto;
+    padding: 25px 25px 75px;
+}
+
+.section-heading {
+    margin-bottom: 25px;
+    font-family: Georgia, serif;
+    font-size: 32px;
+    font-weight: normal;
+    color: #735b46;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 25px;
+}
+
+.card {
+    overflow: hidden;
+    border: 1px solid #eee6dc;
+    border-radius: 17px;
+    background: #fffdf9;
+    box-shadow: 0 8px 25px rgba(65, 48, 31, 0.06);
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 14px 30px rgba(65, 48, 31, 0.12);
+}
+
+.card-link {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.card-image {
+    height: 245px;
+    width: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+.card-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 24px;
+}
+
+.card-tag {
+    color: #a17c5b;
+    font-size: 10px;
+    letter-spacing: 2px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.card h2 {
+    margin: 10px 0 12px;
+    color: #735b46;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 27px;
+    line-height: 1.35;
+    font-weight: normal;
+}
+
+.card p {
+    color: #687176;
+    font-size: 14px;
+    line-height: 1.8;
+    margin-bottom: 22px;
+}
+
+.read-more {
+    margin-top: auto;
+    color: #9b7452;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+footer {
+    padding: 26px 20px;
+    text-align: center;
+    border-top: 1px solid #eeeae5;
+    color: #7e8788;
+    font-size: 12px;
+}
+
+@media (max-width: 700px) {
+    header {
+        padding: 17px 20px;
+        flex-wrap: wrap;
+    }
+
+    nav {
+        gap: 16px;
+    }
+
+    .hero {
+        padding: 42px 20px 28px;
+    }
+
+    .articles {
+        padding: 20px 17px 45px;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .card-image {
+        height: 225px;
+    }
+
+    .card-content {
+        padding: 21px;
+    }
+
+    .card h2 {
+        font-size: 25px;
+    }
+}
 </style>
 </head>
+
 <body>
+
 <header>
-  <a class="logo" href="index.html">Ару <span>♡</span></a>
-  <nav>
-    <a href="#about">Обо мне</a>
-    <a class="active" href="index.html">Новости</a>
-    <a href="#contacts">Контакты</a>
-  </nav>
+    <a href="index.html" class="logo">Мои статьи ♡</a>
+
+    <nav>
+        <a href="index.html">Главная</a>
+        <a href="#articles">Статьи</a>
+    </nav>
 </header>
 
-<section class="hero">
-  <div class="kicker">ЛИЧНЫЙ САЙТ · ПУБЛИКАЦИИ</div>
-  <h1>Истории, которые стоит прочитать</h1>
-  <p>Здесь собраны две отдельные публикации: о том, как меняются цены на продукты в Казахстане, и о неожиданном происшествии на корпоративном мероприятии.</p>
-</section>
+<main>
+    <section class="hero">
+        <div class="eyebrow">Публикации · Анализ · Коммуникации</div>
 
-<main class="content">
-  <h2 class="section-heading">Последние статьи</h2>
-  <p class="section-intro">Выбери публикацию, чтобы открыть её полностью.</p>
-  <div class="cards">
-    <a class="news-card" href="products.html">
-      <div class="card-image products-image" role="img" aria-label="Свежие овощи и продукты"></div>
-      <div class="card-body">
-        <div class="card-tag">НОВОСТИ · ЭКОНОМИКА</div>
-        <h3>Цены на продукты в Казахстане выросли на 8,5% за год</h3>
-        <p>Какие продукты стали дешевле, что означают показатели инфляции и почему цены меняются по-разному.</p>
-        <span class="read-more">Читать статью ↗</span>
-      </div>
-    </a>
-    <a class="news-card" href="chicken.html">
-      <div class="card-image chicken-image" role="img" aria-label="Курица на ферме"></div>
-      <div class="card-body">
-        <div class="card-tag">PR И КОММУНИКАЦИИ</div>
-        <h3>Курица сбежала с корпоративного мероприятия</h3>
-        <p>Видео набрало 300 тысяч просмотров. Как компании ответить на неожиданную ситуацию и общаться с аудиторией.</p>
-        <span class="read-more">Читать статью ↗</span>
-      </div>
-    </a>
-  </div>
+        <h1>Новости, продукты и работа с текстами</h1>
+
+        <p>
+            Здесь собраны три материала: обзор изменения цен на продукты
+            в Казахстане, история о необычном корпоративном событии
+            и практическая работа по сравнению текстов и кризисным коммуникациям.
+        </p>
+
+        <div class="decoration">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </section>
+
+    <section class="articles" id="articles">
+        <h2 class="section-heading">Все статьи</h2>
+
+        <div class="grid">
+
+            <!-- СТАТЬЯ 1: ПРОДУКТЫ -->
+
+            <article class="card">
+                <a href="products.html" class="card-link">
+
+                    <img
+                        class="card-image"
+                        src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1000&q=85"
+                        alt="Свежие овощи и фрукты"
+                    >
+
+                    <div class="card-content">
+                        <span class="card-tag">Новости · Экономика</span>
+
+                        <h2>Цены на продукты в Казахстане</h2>
+
+                        <p>
+                            Как изменились цены за год, почему одни продукты
+                            дорожают, а другие дешевеют, и что это означает
+                            для покупателей.
+                        </p>
+
+                        <span class="read-more">Читать статью →</span>
+                    </div>
+
+                </a>
+            </article>
+
+            <!-- СТАТЬЯ 2: КУРИЦА -->
+
+            <article class="card">
+                <a href="chicken.html" class="card-link">
+
+                    <img
+                        class="card-image"
+                        src="https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?auto=format&fit=crop&w=1000&q=85"
+                        alt="Курица на ферме"
+                    >
+
+                    <div class="card-content">
+                        <span class="card-tag">PR · Социальные сети</span>
+
+                        <h2>Курица сбежала с корпоративного мероприятия</h2>
+
+                        <p>
+                            Необычная ситуация, официальный комментарий компании,
+                            публикация для Instagram и ответ на комментарий
+                            подписчика.
+                        </p>
+
+                        <span class="read-more">Читать статью →</span>
+                    </div>
+
+                </a>
+            </article>
+
+            <!-- СТАТЬЯ 3: СРАВНЕНИЕ ТЕКСТОВ -->
+
+            <article class="card">
+                <a href="comparison.html" class="card-link">
+
+                    <img
+                        class="card-image"
+                        src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1000&q=85"
+                        alt="Работа с текстами и заметками"
+                    >
+
+                    <div class="card-content">
+                        <span class="card-tag">Практическая работа</span>
+
+                        <h2>Кризисные коммуникации</h2>
+
+                        <p>
+                            Текст ИИ и самостоятельный текст, сравнение по фактам,
+                            структуре, стилю и ошибкам. Отдельные антикризисные
+                            сообщения для пользователей и инвесторов.
+                        </p>
+
+                        <span class="read-more">Читать статью →</span>
+                    </div>
+
+                </a>
+            </article>
+
+        </div>
+    </section>
 </main>
 
-<section id="about" class="content" style="padding-top:0">
-  <h2 class="section-heading">Обо мне</h2>
-  <p class="section-intro" style="margin-bottom:0">Это мой личный сайт, где я собираю интересные материалы, новости и информацию, которой хочу поделиться.</p>
-</section>
-<section id="contacts" class="content" style="padding-top:0">
-  <h2 class="section-heading">Контакты</h2>
-  <p class="section-intro" style="margin-bottom:0">Здесь позже можно добавить информацию для связи.</p>
-</section>
-<footer>© 2026 Ару. Личный сайт. ♡</footer>
+<footer>
+    Статьи и материалы · 2026
+</footer>
+
 </body>
 </html>
