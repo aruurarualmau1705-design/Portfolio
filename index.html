@@ -1,208 +1,92 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Моё портфолио</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ару — Новости</title>
 <style>
-*{box-sizing:border-box}
+*{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{margin:0;background:#faf7f1;color:#443e37;font-family:Arial,sans-serif;line-height:1.8}
-header{padding:18px 7%;display:flex;justify-content:space-between;align-items:center;background:#fffdf9;border-bottom:1px solid #e9e0d5}
-.logo{font: bold 27px Georgia,serif;color:#80664e}
-nav{display:flex;gap:20px}
-nav a,.back{color:#80664e;text-decoration:none;font-size:14px}
-.hero,.articles,.page{max-width:1000px;margin:auto;padding:40px 24px}
-.eyebrow,.tag{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#a17c5b;font-weight:bold}
-h1,h2,h3{font-family:Georgia,serif;font-weight:normal;line-height:1.35}
-h1{font-size:clamp(34px,5vw,51px);color:#765b45;line-height:1.2;margin:12px 0}
-h2{font-size:29px;color:#765b45;margin-top:35px}
-h3{font-size:24px;color:#765b45;margin:12px 0}
-.hero p{max-width:680px;color:#71665a}
-.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
-.card{background:#fffdf9;border:1px solid #eee4d8;border-radius:17px;overflow:hidden;box-shadow:0 7px 23px #55402b0b}
-.card img{width:100%;height:220px;object-fit:cover;display:block}
-.card-content{padding:22px}
-.card p{font-size:14px;color:#71665a}
-.card a{color:#986e4c;text-decoration:none;font-weight:bold}
-.card-link{display:block;text-decoration:none;color:inherit}
-.page{display:none;padding-top:25px}
-.page:target{display:block}
-body:has(.page:target) #home{display:none}
-body:not(:has(.page:target)) #home{display:block}
-.message{padding:24px 27px;border-radius:15px;margin:20px 0}
-.ai{background:#e7ede3;border-left:4px solid #879b7b}
-.own{background:#f5e6d9;border-left:4px solid #bd8d68}
-.users{background:#ebe6f3;border-left:4px solid #9b88b8}
-.investors{background:#e2ece7;border-left:4px solid #7c9b8d}
-.message p{text-indent:22px;margin-bottom:12px}
-.table-wrap{overflow-x:auto;margin:20px 0}
-table{border-collapse:collapse;width:100%;min-width:620px;background:#fffdf9;font-size:14px;line-height:1.65}
-th,td{padding:13px;text-align:left;vertical-align:top;border:1px solid #e6ddd1}
-th{background:#e9dfd1;color:#604b38}
-td:first-child{font-weight:bold;color:#806348}
-.note{padding:17px 20px;background:#eee6da;border-left:4px solid #b49573;border-radius:0 10px 10px 0}
-.back{display:inline-block;margin:0 0 20px}
-footer{text-align:center;padding:24px;background:#eee6da;color:#776b5e;font-size:13px}
-@media(max-width:650px){header{padding:15px 18px;flex-wrap:wrap}.grid{grid-template-columns:1fr}.hero,.articles,.page{padding:28px 17px}.message{padding:20px 17px}h2{font-size:25px}}
+body{font-family:Arial,Helvetica,sans-serif;color:#24333b;background:#fff}
+a{color:inherit;text-decoration:none}
+header{height:72px;padding:0 7%;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #eeeae5}
+.logo{font-family:"Brush Script MT","Segoe Script",cursive;font-size:37px;font-style:italic;color:#17252b}
+.logo span{font-family:Georgia,serif;color:#8b7766;font-size:23px}
+nav{display:flex;gap:30px;font-size:13px}
+nav a{padding:26px 0}
+nav a.active{border-bottom:2px solid #d8c69c}
+.hero{padding:66px 7% 60px;background:#f8f7f3}
+.kicker{font-size:11px;letter-spacing:2px;color:#777d70;margin-bottom:18px}
+h1,h2,h3{font-family:Georgia,"Times New Roman",serif;font-weight:normal;color:#18313c}
+.hero h1{font-size:clamp(38px,6vw,65px);line-height:1.05;max-width:760px;margin-bottom:18px}
+.hero p{max-width:630px;color:#566168;font-size:16px;line-height:1.65}
+.content{max-width:1100px;margin:0 auto;padding:48px 22px 65px}
+.section-heading{font-size:35px;margin-bottom:10px}
+.section-intro{color:#6e7778;line-height:1.6;margin-bottom:28px}
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.news-card{border:1px solid #e9e6df;border-radius:17px;overflow:hidden;background:#fff;transition:transform .2s,box-shadow .2s}
+.news-card:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(30,40,35,.08)}
+.card-image{height:245px;background-size:cover;background-position:center}
+.products-image{background-image:url("https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1200&q=85")}
+.chicken-image{background-image:url("https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?auto=format&fit=crop&w=1200&q=85")}
+.card-body{padding:25px}
+.card-tag{font-size:10px;letter-spacing:1.6px;color:#7b826f;margin-bottom:12px}
+.card-body h3{font-size:29px;line-height:1.15;margin-bottom:14px}
+.card-body p{font-size:14px;line-height:1.65;color:#58646a;margin-bottom:20px}
+.read-more{display:inline-block;padding:11px 16px;border-radius:7px;background:#e9ede3;color:#304632;font-size:13px}
+footer{padding:24px;text-align:center;border-top:1px solid #eeeae5;color:#7e8788;font-size:12px}
+@media(max-width:700px){header{padding:0 18px}.logo{font-size:30px}nav{gap:14px;font-size:11px}.cards{grid-template-columns:1fr}.card-image{height:220px}.hero{padding:45px 22px}.content{padding:35px 16px 45px}.card-body h3{font-size:25px}}
 </style>
 </head>
 <body>
-
 <header>
-<div class="logo">Моё портфолио ♡</div>
-<nav><a href="#home">Главная</a><a href="#articles">Статьи</a></nav>
+  <a class="logo" href="index.html">Ару <span>♡</span></a>
+  <nav>
+    <a href="#about">Обо мне</a>
+    <a class="active" href="index.html">Новости</a>
+    <a href="#contacts">Контакты</a>
+  </nav>
 </header>
 
-<!-- ГЛАВНАЯ СТРАНИЦА -->
-<div id="home">
 <section class="hero">
-<div class="eyebrow">Мои материалы</div>
-<h1>Идеи, тексты и работа с информацией</h1>
-<p>Здесь собраны мои статьи и учебные материалы. В них я разбираю тексты, анализирую информацию и рассматриваю, как подбирать слова для разных ситуаций.</p>
+  <div class="kicker">ЛИЧНЫЙ САЙТ · ПУБЛИКАЦИИ</div>
+  <h1>Истории, которые стоит прочитать</h1>
+  <p>Здесь собраны две отдельные публикации: о том, как меняются цены на продукты в Казахстане, и о неожиданном происшествии на корпоративном мероприятии.</p>
 </section>
 
-<section class="articles" id="articles">
-<h2>Мои статьи</h2>
-<div class="grid">
-
-<article class="card">
-<a class="card-link" href="#article-one">
-<img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=900&q=80" alt="Блокнот и письменные заметки">
-<div class="card-content">
-<span class="tag">Тексты и идеи</span>
-<h3>Работа с текстом</h3>
-<p>Структура текста, формулировки и способы понятно выражать мысли.</p>
-<span>Читать статью →</span>
-</div>
-</a>
-</article>
-
-<article class="card">
-<a class="card-link" href="#article-two">
-<img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=900&q=80" alt="Рабочее место с документами">
-<div class="card-content">
-<span class="tag">Анализ</span>
-<h3>Сравнение и анализ информации</h3>
-<p>Как сравнивать содержание, структуру и стиль разных материалов.</p>
-<span>Читать статью →</span>
-</div>
-</a>
-</article>
-
-<article class="card">
-<a class="card-link" href="#article-three">
-<img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=900&q=80" alt="Работа с информацией и анализ сообщений">
-<div class="card-content">
-<span class="tag">Коммуникации</span>
-<h3>Кризисные коммуникации</h3>
-<p>Два варианта текста, сравнение по четырём критериям и обращения пользователям и инвесторам.</p>
-<span>Читать статью →</span>
-</div>
-</a>
-</article>
-
-</div>
-</section>
-</div>
-
-<!-- СТАТЬЯ 1 -->
-<main class="page" id="article-one">
-<a class="back" href="#articles">← Все статьи</a>
-<div class="eyebrow">Тексты и идеи</div>
-<h1>Работа с текстом</h1>
-<img style="width:100%;max-height:360px;object-fit:cover;border-radius:16px" src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1200&q=80" alt="Блокнот">
-<h2>Почему важно правильно строить текст?</h2>
-<p>Хороший текст помогает донести мысль до читателя. Важно не только то, что мы хотим сказать, но и то, как мы выстраиваем объяснение, выбираем слова и связываем предложения между собой.</p>
-<h2>Структура и понятность</h2>
-<p>Вступление знакомит с темой, основная часть раскрывает её, а вывод подводит итог. Если мысли расположены последовательно, читателю легче следить за рассуждением и понимать главную идею.</p>
-<h2>Стиль и редактура</h2>
-<p>Стиль зависит от аудитории и цели. В учебном тексте важны точность и логика, а в личном сообщении можно использовать более естественные формулировки. После написания полезно проверить повторы, грамматику и ясность выражений.</p>
-<p>Работа над текстом — это не только исправление ошибок, но и поиск наиболее понятного способа передать свою мысль.</p>
+<main class="content">
+  <h2 class="section-heading">Последние статьи</h2>
+  <p class="section-intro">Выбери публикацию, чтобы открыть её полностью.</p>
+  <div class="cards">
+    <a class="news-card" href="products.html">
+      <div class="card-image products-image" role="img" aria-label="Свежие овощи и продукты"></div>
+      <div class="card-body">
+        <div class="card-tag">НОВОСТИ · ЭКОНОМИКА</div>
+        <h3>Цены на продукты в Казахстане выросли на 8,5% за год</h3>
+        <p>Какие продукты стали дешевле, что означают показатели инфляции и почему цены меняются по-разному.</p>
+        <span class="read-more">Читать статью ↗</span>
+      </div>
+    </a>
+    <a class="news-card" href="chicken.html">
+      <div class="card-image chicken-image" role="img" aria-label="Курица на ферме"></div>
+      <div class="card-body">
+        <div class="card-tag">PR И КОММУНИКАЦИИ</div>
+        <h3>Курица сбежала с корпоративного мероприятия</h3>
+        <p>Видео набрало 300 тысяч просмотров. Как компании ответить на неожиданную ситуацию и общаться с аудиторией.</p>
+        <span class="read-more">Читать статью ↗</span>
+      </div>
+    </a>
+  </div>
 </main>
 
-<!-- СТАТЬЯ 2 -->
-<main class="page" id="article-two">
-<a class="back" href="#articles">← Все статьи</a>
-<div class="eyebrow">Анализ информации</div>
-<h1>Сравнение и анализ информации</h1>
-<img style="width:100%;max-height:360px;object-fit:cover;border-radius:16px" src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80" alt="Рабочее место">
-<h2>Зачем сравнивать материалы?</h2>
-<p>Сравнение помогает увидеть не только сходства, но и различия между двумя материалами. Даже если они посвящены одной теме, авторы могут по-разному отбирать факты, организовывать информацию и обращаться к читателю.</p>
-<h2>На что обращать внимание?</h2>
-<p><strong>Факты.</strong> Какие сведения приводятся? Есть ли конкретные данные и подтверждения?</p>
-<p><strong>Структура.</strong> В каком порядке раскрывается тема? Есть ли вступление, последовательное объяснение и вывод?</p>
-<p><strong>Стиль.</strong> Текст официальный, нейтральный или разговорный? Подходит ли он своей аудитории?</p>
-<p><strong>Ошибки.</strong> Есть ли грамматические неточности, повторы, неясные формулировки или неподтверждённые утверждения?</p>
-<h2>Вывод</h2>
-<p>При сравнении важно оценивать не только оформление, но и содержание. Чёткие критерии помогают обосновать выводы и понять, какой материал лучше подходит для конкретной цели.</p>
-</main>
-
-<!-- СТАТЬЯ 3 -->
-<main class="page" id="article-three">
-<a class="back" href="#articles">← Все статьи</a>
-<div class="eyebrow">Коммуникации · Практическая работа</div>
-<h1>Кризисные коммуникации: как говорить, когда что-то пошло не так</h1>
-<p>В кризисной ситуации компании важно не просто сообщить о проблеме, но и сохранить доверие людей. Рассмотрим два варианта сообщения о техническом сбое, сравним их и подготовим отдельные обращения для пользователей и инвесторов.</p>
-<div class="note"><strong>Условная ситуация:</strong> сервис «Домой» столкнулся с техническим сбоем, из-за которого часть функций временно недоступна.</div>
-
-<h2>1. Текст, созданный с помощью ИИ</h2>
-<section class="message ai">
-<span class="tag">Вариант ИИ</span>
-<h3>Уведомление о сбое</h3>
-<p>Уважаемые пользователи! Мы столкнулись с техническим сбоем, который может повлиять на работу сервиса «Домой». Наша команда уже занимается решением возникшей проблемы и предпринимает необходимые меры для восстановления полноценной работы платформы.</p>
-<p>Мы понимаем, что временная недоступность отдельных функций может вызывать неудобства, и приносим извинения за сложившуюся ситуацию. Для нас важно обеспечить стабильную и качественную работу сервиса.</p>
-<p>Мы продолжим следить за ситуацией и сообщим дополнительную информацию, как только появятся новые сведения. Благодарим вас за понимание и терпение.</p>
+<section id="about" class="content" style="padding-top:0">
+  <h2 class="section-heading">Обо мне</h2>
+  <p class="section-intro" style="margin-bottom:0">Это мой личный сайт, где я собираю интересные материалы, новости и информацию, которой хочу поделиться.</p>
 </section>
-
-<h2>2. Личный текст</h2>
-<section class="message own">
-<span class="tag">Самостоятельный вариант</span>
-<h3>Что происходит с сервисом?</h3>
-<p>Сейчас в работе сервиса «Домой» возникли технические проблемы. Из-за этого некоторые пользователи могут столкнуться с трудностями при использовании платформы. Мы понимаем, что это неудобно, особенно если сервис нужен вам прямо сейчас.</p>
-<p>Наша команда уже работает над решением проблемы. Мы проверяем работу платформы, чтобы разобраться в ситуации и вернуть все функции в обычный режим. Пока мы не уверены в результате, не хотим обещать точное время восстановления.</p>
-<p>Простите за неудобства. Мы будем делиться новостями по мере появления достоверной информации. Спасибо за терпение и за то, что даёте нам время разобраться в ситуации.</p>
+<section id="contacts" class="content" style="padding-top:0">
+  <h2 class="section-heading">Контакты</h2>
+  <p class="section-intro" style="margin-bottom:0">Здесь позже можно добавить информацию для связи.</p>
 </section>
-
-<h2>3. Сравнение двух текстов</h2>
-<p>Сравним тексты по четырём критериям: факты, структура, стиль и ошибки.</p>
-<div class="table-wrap">
-<table>
-<thead><tr><th>Критерий</th><th>Текст ИИ</th><th>Личный текст</th></tr></thead>
-<tbody>
-<tr><td>Факты</td><td>Упоминаются технический сбой, работа команды и дальнейшее информирование. Причины и точные сроки не указаны.</td><td>Описаны технические проблемы, неудобства и работа команды. Причины и сроки также не уточняются.</td></tr>
-<tr><td>Структура</td><td>Проблема, действия команды, дальнейшее информирование.</td><td>Проблема, влияние на пользователей, действия и объяснение ожиданий.</td></tr>
-<tr><td>Стиль</td><td>Более официальный и формальный. Используются общие деловые формулировки.</td><td>Более простой и естественный язык, обращённый непосредственно к читателю.</td></tr>
-<tr><td>Ошибки</td><td>Явных грамматических ошибок нет, но формулировки местами шаблонные и не содержат конкретных сроков.</td><td>Явных грамматических ошибок нет. Текст понятный, но причины сбоя и сроки восстановления тоже не указаны.</td></tr>
-</tbody>
-</table>
-</div>
-<p>ИИ помогает быстро создать структурированный текст, но он может звучать шаблонно. Личный вариант воспринимается проще. В обоих случаях важно проверять факты и не давать необоснованных обещаний.</p>
-
-<h2>4. Антикризисный текст для пользователей</h2>
-<section class="message users">
-<span class="tag">Обращение к пользователям</span>
-<h3>Сообщение для клиентов</h3>
-<p>Здравствуйте! Сейчас у некоторых пользователей возникают проблемы с доступом к сервису «Домой». Мы понимаем, что это может помешать вашим планам, и сожалеем о возникших неудобствах.</p>
-<p>Наша команда уже занимается устранением технического сбоя и проверяет работу платформы. Пока проблема не решена полностью, отдельные функции могут работать нестабильно.</p>
-<p>Мы будем публиковать обновления по мере появления подтверждённой информации. Спасибо за терпение и доверие — мы понимаем, насколько важно, чтобы сервис работал стабильно.</p>
-</section>
-
-<h2>5. Антикризисный текст для инвесторов</h2>
-<section class="message investors">
-<span class="tag">Обращение к инвесторам</span>
-<h3>Информация о ситуации</h3>
-<p>В работе сервиса «Домой» выявлен технический сбой, который временно затронул доступность отдельных функций платформы. Команда занимается анализом ситуации и восстановлением стабильной работы сервиса.</p>
-<p>Приоритетными задачами являются определение причины сбоя, устранение технических проблем и проверка корректности работы основных функций. Также необходимо оценить возможное влияние инцидента на пользовательский опыт и операционные процессы.</p>
-<p>После получения подтверждённых данных компания сможет точнее оценить последствия ситуации и определить дальнейшие шаги. Инвесторам следует предоставлять актуальную информацию, отделяя установленные факты от предварительных оценок.</p>
-</section>
-
-<h2>Общий вывод</h2>
-<p>Кризисная коммуникация должна быть честной, своевременной и понятной. Пользователям важны объяснение проблемы и информация о дальнейших действиях. Инвесторам необходимы сведения о рисках и мерах команды. Для обеих аудиторий важно опираться на подтверждённые факты и избегать необоснованных обещаний.</p>
-<p class="note">«Домой» — условный сервис, описанный для учебного примера.</p>
-</main>
-
-<footer>Портфолио · Статьи и учебные материалы</footer>
+<footer>© 2026 Ару. Личный сайт. ♡</footer>
 </body>
 </html>
