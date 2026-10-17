@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orientation Week в AlmaU</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f5f7fb;
+            color: #252525;
+            line-height: 1.8;
+        }
+
+        header {
+            background-color: #172554;
+            color: white;
+            text-align: center;
+            padding: 35px 20px;
+        }
+
+        header p {
+            margin-bottom: 0;
+            color: #dbeafe;
+        }
+
+        main {
+            max-width: 850px;
+            margin: 35px auto;
+            padding: 35px;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+        }
+
+        .category {
+            color: #2563eb;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 13px;
+            letter-spacing: 1px;
+        }
+
+        h1 {
+            font-size: 34px;
+            line-height: 1.3;
+        }
+
+        h2 {
+            margin-top: 30px;
+            color: #172554;
+            font-size: 23px;
+        }
+
+        .lead {
+            font-size: 19px;
+            color: #444;
+            border-left: 4px solid #2563eb;
+            padding-left: 18px;
+        }
+
+        .quote {
+            background-color: #eff6ff;
+            border-left: 4px solid #2563eb;
+            padding: 18px;
+            margin: 25px 0;
+            font-style: italic;
+        }
+
+        .note {
+            color: #666;
+            font-size: 14px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            color: #666;
+        }
+
+        a {
+            color: #2563eb;
+        }
+
+        @media (max-width: 600px) {
+            main {
+                margin: 15px;
+                padding: 22px;
+            }
+
+            h1 {
+                font-size: 27px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Первый шаг в AlmaU: Orientation Week</h1>
+    <p>Университетская жизнь начинается со знакомства</p>
+</header>
+
+<main>
+    <div class="category">Студенческая жизнь</div>
+
+    <h1>Три дня, чтобы познакомиться с университетом</h1>
+
+    <p class="lead">
+        Переход из школы в университет — новый этап, связанный
+        с переменами, знакомствами и новыми возможностями.
+        В конце августа в AlmaU прошла Orientation Week —
+        мероприятие для знакомства первокурсников с университетом
+        и студенческой жизнью.
+    </p>
+
+    <h2>Знакомство с AlmaU</h2>
+
+    <p>
+        Orientation Week проходила в течение трёх дней.
+        Программа включала знакомство студентов, экскурсию по кампусу
+        и выступления студенческих клубов.
+    </p>
+
+    <p>
+        Экскурсия по кампусу позволила первокурсникам познакомиться
+        с университетским пространством. Знакомство между студентами
+        стало возможностью пообщаться с будущими однокурсниками,
+        а выступления клубов помогли узнать о возможностях
+        внеучебной деятельности.
+    </p>
+
+    <h2>Не только учёба</h2>
+
+    <p>
+        Университетская жизнь состоит не только из лекций,
+        практических занятий и экзаменов. Общение с другими студентами
+        и участие во внеучебных мероприятиях также могут стать
+        важной частью обучения.
+    </p>
+
+    <p>
+        Для первокурсников знакомство с университетом особенно важно:
+        в начале учёбы им предстоит привыкнуть к новой обстановке,
+        познакомиться с однокурсниками и самостоятельно организовывать
+        своё время.
+    </p>
+
+    <h2>Мнение участника</h2>
+
+    <div class="quote">
+        Здесь необходимо разместить реальный комментарий участника
+        Orientation Week. Укажите его имя и статус с разрешения
+        собеседника.
+    </div>
+
+    <h2>Взгляд организатора</h2>
+
+    <div class="quote">
+        Здесь необходимо разместить реальный комментарий организатора
+        мероприятия о целях Orientation Week и её роли в адаптации
+        первокурсников.
+    </div>
+
+    <h2>Начало нового этапа</h2>
+
+    <p>
+        Orientation Week стала одним из первых событий университетской
+        жизни первокурсников AlmaU. Знакомство с кампусом, другими
+        студентами и студенческими клубами помогло представить,
+        какие возможности открываются перед ними за пределами учебных
+        аудиторий.
+    </p>
+
+    <p class="note">
+        Материал подготовлен для учебного портфолио.
+        Перед публикацией необходимо проверить фактические сведения
+        и добавить источники использованной информации.
+    </p>
+
+</main>
+
+<footer>
+    © 2026 | Студенческое журналистское портфолио
+</footer>
+
+</body>
+</html>
