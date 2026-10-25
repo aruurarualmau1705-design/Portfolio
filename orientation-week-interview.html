@@ -190,7 +190,36 @@
       main { padding: 15px 0; }
       .question-card, .intro { box-shadow: none; break-inside: avoid; }
     }
-  </style>
+  ```css
+.interviewee {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: 28px;
+}
+
+.interviewee-photo {
+  width: 150px;
+  height: 190px;
+  object-fit: cover;
+  border-radius: 14px;
+}
+
+.interviewee h2 {
+  margin-bottom: 8px;
+}
+
+.interviewee p {
+  color: #b83232;
+}
+
+@media (max-width: 500px) {
+  .interviewee-photo {
+    width: 110px;
+    height: 145px;
+  }
+}
+```</style>
 </head>
 <body>
   <header class="site-header">
@@ -206,6 +235,15 @@
       <h1>После Orientation Week: как первокурсникам найти своё место в AlmaU</h1>
       <p class="hero-summary">О трудностях адаптации, студенческих клубах, поддержке после ориентационной недели и о том, почему каждому студенту важно двигаться в собственном темпе.</p>
       <p class="byline">Собеседница: Малика, представитель Центра развития студентов AlmaU</p>
+      <div class="interviewee">
+  <img src="malika-khairulla.png"
+       alt="Хайрулла Малика"
+       class="interviewee-photo">
+  <div>
+    <h2>Хайрулла Малика</h2>
+    <p>Менеджер Центра развития студентов AlmaU</p>
+  </div>
+</div>
     </div>
   </section>
 
